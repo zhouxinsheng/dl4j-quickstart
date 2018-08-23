@@ -1,27 +1,27 @@
 package org.deeplearning4j;
 
-import org.deeplearning4j.datasets.iterator.*;
-import org.deeplearning4j.datasets.iterator.impl.*;
-import org.deeplearning4j.nn.api.*;
-import org.deeplearning4j.nn.multilayer.*;
-import org.deeplearning4j.nn.conf.*;
-import org.deeplearning4j.nn.conf.inputs.*;
-import org.deeplearning4j.nn.conf.layers.*;
-import org.deeplearning4j.nn.weights.*;
-import org.deeplearning4j.optimize.listeners.*;
-import org.deeplearning4j.datasets.datavec.RecordReaderMultiDataSetIterator;
 import org.deeplearning4j.datasets.iterator.impl.EmnistDataSetIterator;
-import org.deeplearning4j.eval.*;
-import org.deeplearning4j.earlystopping.*;
-import org.deeplearning4j.earlystopping.termination.*;
-import org.deeplearning4j.earlystopping.saver.*;
-import org.deeplearning4j.earlystopping.scorecalc.*;
-import org.deeplearning4j.earlystopping.trainer.*;
-
-import org.nd4j.linalg.learning.config.*; // for different updaters like Adam, Nesterovs, etc.
-import org.nd4j.linalg.activations.Activation; // defines different activation functions like RELU, SOFTMAX, etc.
-import org.nd4j.linalg.lossfunctions.LossFunctions; // mean squared error, multiclass cross entropy, etc.
-import org.nd4j.linalg.dataset.api.iterator.*;
+import org.deeplearning4j.earlystopping.EarlyStoppingConfiguration;
+import org.deeplearning4j.earlystopping.EarlyStoppingResult;
+import org.deeplearning4j.earlystopping.saver.LocalFileModelSaver;
+import org.deeplearning4j.earlystopping.scorecalc.DataSetLossCalculator;
+import org.deeplearning4j.earlystopping.termination.MaxEpochsTerminationCondition;
+import org.deeplearning4j.earlystopping.termination.MaxTimeIterationTerminationCondition;
+import org.deeplearning4j.earlystopping.trainer.EarlyStoppingTrainer;
+import org.deeplearning4j.eval.Evaluation;
+import org.deeplearning4j.eval.ROCMultiClass;
+import org.deeplearning4j.nn.api.OptimizationAlgorithm;
+import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
+import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
+import org.deeplearning4j.nn.conf.layers.DenseLayer;
+import org.deeplearning4j.nn.conf.layers.OutputLayer;
+import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
+import org.deeplearning4j.nn.weights.WeightInit;
+import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
+import org.nd4j.linalg.activations.Activation;
+import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
+import org.nd4j.linalg.learning.config.Adam;
+import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 import java.util.concurrent.TimeUnit;
 
