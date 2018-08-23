@@ -77,7 +77,7 @@ public class Trainer {
                 .iterationTerminationConditions(new MaxTimeIterationTerminationCondition(20, TimeUnit.MINUTES))
                 .scoreCalculator(new DataSetLossCalculator(emnistTest, true))
                 .evaluateEveryNEpochs(1)
-                .modelSaver(new LocalFileModelSaver(System.getProperty("user.dir")))e
+                .modelSaver(new LocalFileModelSaver(System.getProperty("user.dir")))
                 .build();
 
         // training
