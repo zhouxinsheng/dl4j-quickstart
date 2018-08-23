@@ -23,7 +23,6 @@ import org.nd4j.linalg.activations.Activation; // defines different activation f
 import org.nd4j.linalg.lossfunctions.LossFunctions; // mean squared error, multiclass cross entropy, etc.
 import org.nd4j.linalg.dataset.api.iterator.*;
 
-import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class Trainer {
@@ -36,7 +35,6 @@ public class Trainer {
 
     public static void main(String... args) throws java.io.IOException {
         // create the data iterators for emnist
-        EmnistDataSetIterator.Set emnistSet = EmnistDataSetIterator.Set.BALANCED;
         DataSetIterator emnistTrain = new EmnistDataSetIterator(emnistSet, batchSize, true);
         DataSetIterator emnistTest = new EmnistDataSetIterator(emnistSet, batchSize, false);
 
@@ -75,11 +73,11 @@ public class Trainer {
         // early stopping is useful when your trainer runs for
         // a long time or you need to programmatically stop training
         EarlyStoppingConfiguration esConf = new EarlyStoppingConfiguration.Builder()
-                .epochTerminationConditions(new MaxEpochsTerminationCondition(30))
+                .epochTerminationConditions(new MaxEpochsTerminationCondition(5))
                 .iterationTerminationConditions(new MaxTimeIterationTerminationCondition(20, TimeUnit.MINUTES))
                 .scoreCalculator(new DataSetLossCalculator(emnistTest, true))
                 .evaluateEveryNEpochs(1)
-                .modelSaver(new LocalFileModelSaver(System.getProperty("user.dir")))
+                .modelSaver(new LocalFileModelSaver(System.getProperty("user.dir")))e
                 .build();
 
         // training
