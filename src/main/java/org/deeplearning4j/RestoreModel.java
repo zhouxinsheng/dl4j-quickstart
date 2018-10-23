@@ -28,7 +28,7 @@ public class RestoreModel {
             input[i] = Nd4j.create(temp);
         }
         INDArray output = model.outputSingle(input);
-        System.out.println("**** output:" + output + "target: 0.36568087339401245");
+        System.out.println("**** output:" + output + "  --  target: 0.36568087339401245");
 
         // test write model
         String savePath = "model.zip";
@@ -49,6 +49,6 @@ public class RestoreModel {
         }
 
         INDArray output2 = model.outputSingle(input);
-        System.out.println("#### output:" + output2 + "target: 0.36568087339401245");
+        System.out.println("#### output:" + output2 + "  --  target: 0.36568087339401245");
     }
 }
